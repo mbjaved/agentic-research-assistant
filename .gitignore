@@ -1,0 +1,9 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+report.md
+
+# Local notes and editor config
+DEMO_SCRIPT.md
+.claude/
