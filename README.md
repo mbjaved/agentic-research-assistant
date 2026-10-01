@@ -1,8 +1,10 @@
 # 🧠 Agentic Research Assistant
 
-A small, production-shaped **multi-agent system** built on the Anthropic Claude API. Give it a topic and four specialist agents collaborate to produce a well-structured, source-grounded report — with a critic that reviews and sends the draft back for revision until it meets a quality bar.
+Five agents on the Anthropic Claude API that turn a question into a sourced report. A planner decomposes the goal, a researcher gathers findings with live search, a writer drafts from those findings only, a fact-checker verifies each claim against its source, and a critic scores the draft and sends it back until it clears a quality bar.
 
-Built to demonstrate **agentic orchestration, tool-use, and clean full-stack packaging** (CLI + FastAPI + web UI).
+I built it to find out where multi-agent designs actually earn their cost over a single well-prompted call. The answer turned out to be the critic loop rather than the parallelism: splitting research across agents bought less than forcing a draft through verification and revision. The citation handling comes from the same conviction. An agent that returns a confident unsourced answer is worse than one that returns nothing.
+
+Runs as a CLI, a FastAPI service, or a small self-contained web UI.
 
 ---
 
@@ -85,7 +87,7 @@ Optional: set `TAVILY_API_KEY` in `.env` to give the Researcher live web search.
 
 ## Why this exists
 
-A compact reference for how I build agentic systems: clear agent boundaries, real tool-use, a quality-control loop, and a clean CLI/API/UI wrapper — the same patterns I apply to production Gen AI work.
+The patterns here are the ones I use on production Gen AI work: clear agent boundaries, a generic tool-use loop so any agent can be handed tools, a quality gate that can reject its own output, and citations that trace every claim back to a source. Most of that production code is not mine to publish, so this is the readable version.
 
 *Built by Muhammad Bin Javed — Senior Software Engineer (Gen AI, Full-Stack). [LinkedIn](https://www.linkedin.com/in/mbj05)*
 
